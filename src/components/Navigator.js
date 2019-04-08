@@ -1,7 +1,7 @@
 import React from 'react';
-import {withRouter, Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import Make from 'classnames';
+import {withRouter, Link} from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -10,17 +10,17 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
-import PeopleIcon from '@material-ui/icons/People';
-import DnsRoundedIcon from '@material-ui/icons/DnsRounded';
-import PermMediaOutlinedIcon from '@material-ui/icons/PhotoSizeSelectActual';
-import PublicIcon from '@material-ui/icons/Public';
-import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
-import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
 import TimerIcon from '@material-ui/icons/Timer';
+import PeopleIcon from '@material-ui/icons/People';
+import PublicIcon from '@material-ui/icons/Public';
 import SettingsIcon from '@material-ui/icons/Settings';
+import DnsRoundedIcon from '@material-ui/icons/DnsRounded';
 import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
+import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
+import PermMediaOutlinedIcon from '@material-ui/icons/PhotoSizeSelectActual';
+import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
 
-const categories = [
+export const categories = [
   {
     id: 'Project Overview',
     isHeader: 1,
@@ -58,6 +58,12 @@ const categories = [
       {id: 'List', url: '/test', icon: <PhonelinkSetupIcon />},
     ],
   },
+];
+
+export const more = [
+  {id: 'Home', url: '/home', icon: <HomeIcon />},
+  {id: 'Game', url: '/game', icon: <TimerIcon />},
+  {id: 'Gate', url: '/gate', icon: <PhonelinkSetupIcon />},
 ];
 
 const styles = (theme) => ({
@@ -113,12 +119,12 @@ function Navigator(props) {
   return (
     <Drawer variant='permanent' {...other}>
       <List disablePadding>
-        <ListItem className={classNames(classes.firebase, classes.item, classes.itemCategory)}>Paperbase</ListItem>
+        <ListItem className={Make(classes.firebase, classes.item, classes.itemCategory)}>Paperbase</ListItem>
 
         {categories.map(({id, isHeader, children}) =>
           isHeader ? (
             <React.Fragment key={id}>
-              <ListItem className={classNames(classes.item, classes.itemCategory)}>
+              <ListItem className={Make(classes.item, classes.itemCategory)}>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
@@ -139,7 +145,7 @@ function Navigator(props) {
                       button
                       dense
                       key={childId}
-                      className={classNames(classes.item, classes.itemActionable, active && classes.itemActiveItem)}
+                      className={Make(classes.item, classes.itemActionable, active && classes.itemActiveItem)}
                       component={Link}
                       to={url}>
                       <ListItemIcon>{icon}</ListItemIcon>
